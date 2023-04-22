@@ -198,6 +198,77 @@ void Hotel::RecherChambre()	//SEARCH FOR A PARTICULAR TYPE OF A ROOM
 		cout<<"Aucune chambre n'est disponible."<<endl;
 	}
 }
+void Hotel::enregistr()		//CHECK IN OF A CUSTOMER
+{
+	if(nchambre==0)
+	{
+		cout<<"Veuillez ajouter des chambres."<<endl;
+		return;
+	}
+	int i, numch;
+	if(noclient<=nchambre){	//CHECKING CONDITION IF HOTEL HAS EMPTY ROOMS
+		c[noclient].id_reservation=noclient+1;	//ALLOTING CUSTOMER ID TO THE CUSTOMER
+		flag:
+		int flag1=0;
+		cout<<"Entrez le numero de chambre=";		//ASKING WHAT ROOM NUMBER CUSTOMER WANTS TO STAY IN
+		cin>>numch;
+		for(i=0;i<nchambre; i++){
+			if(numch==a[i].num_chambre)
+			{
+				flag1=1;
+				break;
+			}
+		}
+		if(flag1==0){
+			cout<<"Numero de chambre invalide. Veuillez entrer a nouveau.\n";
+			goto flag;
+		}
+		if(a[i].statu==0)		//CHECKING IF ROOM IS UNOCCUPIED
+		{
+			char ch2;
+			cout<<"Chambre disponible."<<endl;
+			a[i].Afficherchambre();
+			cout<<"Souhaitez-vous continuer? entree(Y/y)";		//CONFIRMATION
+			cin>>ch2;
+			if(ch2=='Y'||ch2=='y')
+			{
+				c[noclient].accepter();		//ACCEPTING CUSTOMER DETAILS
+				cout<<"Entrez le nombre de jours de sejour: ";
+				cin>>c[noclient].jours;
+				c[noclient].facture = c[noclient].jours*a[i].prix;		//generating bill. bill= No. of days * rent per day.
+				cout<<"Votre facture totale sera d'environ DH."<<(c[noclient].facture)<<"."<<endl<<". Min Avance de paiement="<<c[noclient].facture/4<<"Que paierez-vous?";
+				cin>>c[noclient].Avance_de_paiement;
+				while(c[noclient].Avance_de_paiement<c[noclient].facture/4||c[noclient].Avance_de_paiement>c[noclient].facture)
+				{
+					cout<<"Entrez un montant valide.";
+					cin>>c[noclient].Avance_de_paiement;
+				}
+				cout<<"Merci. Reservation confirmee."<<endl;		//confirmed booking
+				cout<<"--------------------------------------------------------------"<<endl;		//printing booking details
+				cout<<"Reservation Id: "<<c[noclient].id_reservation<<"\nNom: "<<c[noclient].nom<<"\nRoom no.: "<<numch<<"\nDate: ";
+				time_t my_time = time(NULL);
+						// ctime() used to give the present time
+				printf("%s", ctime(&my_time));
+				a[i].statu=1;		//changing room status to booked
+				c[noclient].chambre=numch;		//alloting room to customer
+				c[noclient].statu=1;
+				noclient++;
+			}
+			else		//if needs to change room number
+			{
+				goto flag;
+			}
+		}
+		else		//if room is occupied
+		{
+			cout<<"Chambre occupee. Veuillez choisir une autre chambre."<<endl;
+		}
+	}
+	else		//CONDITION ALL ROOMS ARE BOOKED
+	{
+		cout<<"Desole! L'hotel est plein. :("<<endl;
+	}
+}
 
 int main()
 {
