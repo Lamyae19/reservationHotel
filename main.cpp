@@ -46,6 +46,65 @@ void Client::accepter() {
 
 
 
+class chambre
+{
+	char type;				
+	char taille;				//stype= taille
+	char ac;				//AC OR NON AC 
+	int num_chambre;			//roomNumber
+	double prix;			//rent=prix
+	int statu=0;			//ROOM IS BOOKED OR NOT
+public:
+	friend class Hotel;
+	void acceptchambre(int numch);		//rno = numch
+	void displaychambre();		//DISPLAY ROOMS
+	chambre()					//DEFAULT CONSTRUCTOR
+	{
+		type='\0';
+		taille='\0';
+		ac='\0';
+		num_chambre=0;
+		prix=0;
+		statu=0;
+	}
+};
+void Room::acceptchambre(int numch)		//ACCEPTING ALL ROOM DETAILS
+{
+	num_chambre=numch;	//ROOM NUMBER
+	cout<<"Type: AC/Non-AC [AC=air conditionné](A/N) : ";
+	cin>>ac;
+	while(ac!='A'&& ac!='N')		//VALIDATIONS
+	{
+		cout<<"Veuillez ré-entrer le Type: AC/Non-AC (A/N) : ";
+		cin>>ac;
+	}
+	cout<<"Type Suite Confort ou Normal(S/N) : ";
+	cin>>type;
+	while(type!='S' && type!='N')
+	{
+		cout<<"Veuillez saisir à nouveau Type Suite Confort ou Normal(S/N) : ";
+		cin>>type;
+	}
+	cout<<"taille du chambre grand ou petit (G/P) : "; // B=G;S=P
+	cin>>taille;
+	while(taille!='G'&& taille!='P')
+	{
+		cout<<"Veuillez saisir à nouveau la taille du chambre grand ou petit (G/P) : ";
+		cin>>taille;
+	}
+	cout<<"Loyer journalier : ";
+	cin>>prix;
+	while(prix<0 || prix>20000)
+	{
+		cout<<"Veuillez entrer un loyer valide.";
+		cin>>prix;
+	}
+	statu=0;	//BOOKING STATUS OF THE ROOM
+	cout<<"\nchambre ajoutée avec succès!"<<endl;
+}
+
+
+
 int main()
 {
   
