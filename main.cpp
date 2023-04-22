@@ -281,7 +281,7 @@ void Hotel::recherclient()
 			cout<<"\t\t\t Nom"<<setw(20);
 			cout<<"\t\t\t telephone"<<setw(20);
 			cout<<"\t\t\t adresse"<<setw(20);
-			cout<<"\t\t\tRoom no: "<<setw(20)<<endl;
+			cout<<"\t\t\tchambre no: "<<setw(20)<<endl;
 			c[i].afficher();
 			flag=1;
 		}
