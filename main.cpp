@@ -102,6 +102,13 @@ void Room::acceptchambre(int numch)		//ACCEPTING ALL ROOM DETAILS
 	statu=0;	//BOOKING STATUS OF THE ROOM
 	cout<<"\nchambre ajoutée avec succès!"<<endl;
 }
+void Room::Afficherchambre()
+{
+	cout<<"| "<<num_chambre<<".\t\t|\t"<<ac<<"\t\t|\t"<<type<<"\t\t|\t"<<taille<<"\t\t|\t"<<prix<<"\t\t|\t";
+	if(statu==0){cout<<"Disponible.\t|";}
+	else{cout<<"Réservé.\t\t|";}
+	cout<<endl;
+}
 
 
 
