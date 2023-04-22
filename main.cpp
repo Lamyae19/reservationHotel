@@ -169,7 +169,35 @@ void Hotel::disponibilite()		//CHECKING AVAILABILITY OF THE ROOMS
 		a[i].Afficherchambre();	//DISPLAYING ROOM DETAILS
 	}
 }
-
+void Hotel::RecherChambre()	//SEARCH FOR A PARTICULAR TYPE OF A ROOM
+{
+	if(nchambre==0)
+	{
+		cout<<"Veuillez ajouter des chambres."<<endl;
+		return;
+	}
+	int flag=0;
+	char ac1, type1, taille1;
+	cout<<"Est-ce que tu veux AC ou Non-AC? (A/N): "<<endl;
+	cin>>ac1;
+	cout<<"Voulez-vous une suite ou une chambre normale ?"<<endl;
+	cin>>type1;
+	cout<<"taille? (G/P)"<<endl;
+	cin>>taille1;
+	for(int i=0;i<nchambre;i++)
+	{
+		if(a[i].ac==ac1 && a[i].type==type1 && a[i].taille==taille1)		//MAKING SURE ALL CONDITIONS ARE SATISFIED
+		{
+			flag=1;
+			cout<<"Chambre trouvee."<<endl;
+			a[i].Afficherchambre();
+		}
+	}
+	if(flag==0)
+	{
+		cout<<"Aucune chambre n'est disponible."<<endl;
+	}
+}
 
 int main()
 {
