@@ -75,21 +75,21 @@ void Room::acceptchambre(int numch)		//ACCEPTING ALL ROOM DETAILS
 	cin>>ac;
 	while(ac!='A'&& ac!='N')		//VALIDATIONS
 	{
-		cout<<"Veuillez ré-entrer le Type: AC/Non-AC (A/N) : ";
+		cout<<"Veuillez re-entrer le Type: AC/Non-AC (A/N) : ";
 		cin>>ac;
 	}
 	cout<<"Type Suite Confort ou Normal(S/N) : ";
 	cin>>type;
 	while(type!='S' && type!='N')
 	{
-		cout<<"Veuillez saisir à nouveau Type Suite Confort ou Normal(S/N) : ";
+		cout<<"Veuillez saisir a nouveau Type Suite Confort ou Normal(S/N) : ";
 		cin>>type;
 	}
 	cout<<"taille du chambre grand ou petit (G/P) : "; // B=G;S=P
 	cin>>taille;
 	while(taille!='G'&& taille!='P')
 	{
-		cout<<"Veuillez saisir à nouveau la taille du chambre grand ou petit (G/P) : ";
+		cout<<"Veuillez saisir a nouveau la taille du chambre grand ou petit (G/P) : ";
 		cin>>taille;
 	}
 	cout<<"Loyer journalier : ";
@@ -100,16 +100,61 @@ void Room::acceptchambre(int numch)		//ACCEPTING ALL ROOM DETAILS
 		cin>>prix;
 	}
 	statu=0;	//BOOKING STATUS OF THE ROOM
-	cout<<"\nchambre ajoutée avec succès!"<<endl;
+	cout<<"\nchambre ajoutee avec succes!"<<endl;
 }
 void Room::Afficherchambre()
 {
 	cout<<"| "<<num_chambre<<".\t\t|\t"<<ac<<"\t\t|\t"<<type<<"\t\t|\t"<<taille<<"\t\t|\t"<<prix<<"\t\t|\t";
 	if(statu==0){cout<<"Disponible.\t|";}
-	else{cout<<"Réservé.\t\t|";}
+	else{cout<<"Reserve.\t\t|";}
 	cout<<endl;
 }
-
+class Hotel
+{
+	chambre a[100];			//ARRAY OF ROOMS
+	Client c[100];			//ARRAY OF CUSTOMERS
+	int nchambre=0, nclient=0;	//NO OF ROOMS AND CUSTOMERS
+public:
+	void AjoutChambre();		//addRooms
+	void RecherChambre();		//searchroom
+	void enregistr();			//CheckIn
+	void recherclient();		//searchcust
+	void disponibilite();	//availability
+	void quitter();		//CheckOut
+	void Resume();			//Summary
+};
+void Hotel::AjoutChambre()
+{
+	int numch;
+	cout<<"Entrez le nombre des chambres: ";
+	cin>>nchambre;		//ACCEPTING NUMBER OF ROOMS
+	while(nchambre<=0)
+	{
+		cout<<"Invalide. Entrez un nombre valide des chambres.";
+		cin>>nchambre;
+	}
+	for(int i=0;i<nchambre;i++)
+	{
+		cout<<"CHAMBRE "<<(i+1)<<endl;
+		flag:
+		cout<<endl<<"Entrez le numero de chambre : ";
+		cin>>numch;
+		if(numch<=0)		//VALIDATIONS
+		{
+			cout<<endl<<"Ce numero de chambre est invalide ! Veuillez ressaisir le numero de chambre : ";
+			goto flag;
+		}
+		for(int i=0; i<nchambre;i++)	//VALIDATIONS FOR REPETITIVE ROOM NUMBERS
+		{
+			if(a[i].num_chambre==numch)
+			{
+				cout<<"Invalide. Numero de chambre repetitifs."<<endl;
+				goto flag;
+			}
+		}
+		a[i].acceptchambre(numch);		//CALLING FUNCTION ACCEPT ROOM FROM CLASS ROOM
+	}
+}
 
 
 int main()
