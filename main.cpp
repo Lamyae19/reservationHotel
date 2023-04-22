@@ -11,10 +11,8 @@ using namespace std;
              // Class client
 class Client {
     string nom;
-    string prenom;
     string adresse;
     string telephone;
-    string cin;
     int jours = 0;
     float Avance_de_paiement;
     double facture=0 ;
@@ -33,14 +31,13 @@ public :
     void accepter();
     void afficher(); 
     friend class chambre;
-    friend class htoel;
+    friend class hotel;
 
 };
 void Client::accepter() {
     cout << "Saisir le nom de client ";
     std::basic_istream::getline(cin, nom);
-    cout << "Saisir le prenom de client ";
-    std::basic_istream::getline(cin, prenom);
+    
 }
 
 
