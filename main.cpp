@@ -291,7 +291,37 @@ void Hotel::recherclient()
 		cout<<"Aucun client trouve."<<endl;
 	}
 }
-
+void Hotel::quitter()		//CHECKING OUT
+{
+	int numch, i, j;
+	cout<<"Entrez le numero de chambre= ";
+	cin>>numch;
+	for(j=0;j<nchambre; j++){
+		if(numch==a[j].num_chambre)
+		{
+			break;
+		}
+	}
+	if(a[j].statu==0)		//IF ROOM NOT FOUND OCCUPIED
+	{
+		cout<<"Invalide."<<endl;
+	}
+	for(i=0;i<noclient;i++)	//CHECKING CUSTOMER DETAILS
+	{
+		if(c[i].chambre==numch)
+		{
+			cout<<"dejat sortie."<<endl;
+			c[i].afficher();		//CUSTOMER DETAILS
+			cout<<"Votre facture totale est : "<<c[i].facture<<endl;
+			cout<<"Avance de paiement : "<<c[i].Avance_de_paiement;
+			cout<<endl<<"le reste du paiement = DH."<<c[i].facture-c[i].Avance_de_paiement;		//PENDING PAYMENTS
+			cout<<endl<<"Merci! Visiter encore :)"<<endl;
+			a[j].statu=0;	//CHANGING STATUS OF ROOM TO UNOCCUPIED
+			c[i].statu=0;	//CHECKED OUT
+			break;
+		}
+	}
+}
 int main()
 {
 	Hotel slm;		//HOTEL SLM SALMA.LAMIYA.MALAK
