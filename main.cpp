@@ -155,6 +155,20 @@ void Hotel::AjoutChambre()
 		a[i].acceptchambre(numch);		//CALLING FUNCTION ACCEPT ROOM FROM CLASS ROOM
 	}
 }
+void Hotel::disponibilite()		//CHECKING AVAILABILITY OF THE ROOMS
+{
+	if(nchambre==0)
+	{
+		cout<<"Veuillez ajouter des chambres."<<endl;
+		return;
+	}
+	cout<<"La liste de toutes les chambres disponibles:"<<endl;
+	cout<<"| chambre No.\t|\tAC/Non-AC\t|\tType\t\t|\ttaille\t\t|\tprix\t\t|\tdisponibilite \t|"<<endl;
+	for(int i=0;i<nchambre;i++)
+	{
+		a[i].Afficherchambre();	//DISPLAYING ROOM DETAILS
+	}
+}
 
 
 int main()
