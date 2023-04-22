@@ -322,6 +322,25 @@ void Hotel::quitter()		//CHECKING OUT
 		}
 	}
 }
+void Hotel::Resume()		//PRINTING LIST OF ALL CUSTOMERS
+{
+	if(nchambre==0)
+	{
+		cout<<"Pas encore de clients."<<endl;
+		return;
+	}
+	cout<<"Recapitulatif des invites:"<<endl;
+	cout<<"Id.\t\t";
+	cout<<"|	Nom	\t\t";
+	cout<<"|	telephone	\t\t";
+	cout<<"|	adresse	\t\t";
+	cout<<"|	chambre no	: \t";
+	cout<<"|	Statu	\t\t|"<<endl;
+	for(int i=0;i<noclient;i++)
+	{
+		c[i].afficher();
+	}
+}
 int main()
 {
 	Hotel slm;		//HOTEL SLM SALMA.LAMIYA.MALAK
