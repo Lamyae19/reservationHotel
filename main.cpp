@@ -10,6 +10,7 @@ using namespace std;
 
              // Class client
 class Client {
+public :
     string nom;
     string adresse;
     string telephone;
@@ -19,7 +20,6 @@ class Client {
     int id_reservation ;
     int chambre;
     int statu; 
-public :
     Client() {
         jours = 0;
         Avance_de_paiement = 0;
