@@ -28,13 +28,13 @@ public :
         statu = 0;
         chambre = 0;
     }
-    void accepter();
-    void afficher(); 
+    void accepter();     //ACCEPTER LES COORDONNÉES DU CLIENT
+    void afficher();     //AFFICHER LES COORDONNÉES DU CLIENT
     friend class chambre;
     friend class hotel;
 
 };
-void Client::accepter() {
+void Client::accepter() {         //ACCEPTER LES COORDONNÉES DU CLIENT
    cout<<"Enter le nom de client: ";
 	getline(cin, nom);
 	getline(cin, nom);
@@ -43,9 +43,9 @@ void Client::accepter() {
 	flag:
 	cout<<"Enter le numero de telephone : ";
 	cin>>telephone;
-	for(int i=0;i<(telephone.length());i++)	
+	for(int i=0;i<(telephone.length());i++)	// VALIDATIONS DU NEMERO DE TELEPHONE
   	{									
-		if(!isdigit(telephone[i]))
+		if(!isdigit(telephone[i]))      ////le numero de telephone doit etre compose uniquement de chiffre et avoir une longueur de 10
 		{
 			cout<<"le numero de telephone doit etre en chiffres.\n";
 			goto flag;
@@ -57,7 +57,7 @@ void Client::accepter() {
   	  goto flag;
  	 }
 }
-void Client::afficher()		//DISPLAYING CUSTOMER DETAILS
+void Client::afficher()		////afficher les details du client
 {
 	cout<<id_reservation<<"\t\t";
 	cout<<"| "<<left<<setfill(' ')<<setw(30)<<nom;
@@ -67,19 +67,20 @@ void Client::afficher()		//DISPLAYING CUSTOMER DETAILS
 	if(statu==1){cout<<"|\t\t-\t|"<<endl;}
 	else{cout<<"|dejat sortie.\t|"<<endl;}
 }
+////CLASS chambre
 class chambre
 {
 	char type;				
-	char taille;				//stype= taille
+	char taille;				// taille
 	char ac;				//AC OR NON AC 
-	int num_chambre;			//roomNumber
-	double prix;			//rent=prix
-	int statu=0;			//ROOM IS BOOKED OR NOT
+	int num_chambre;			//numero de la chambre 
+	double prix;			//prix
+	int statu=0;			//LA CHAMBRE EST RÉSERVÉE OU NON
 public:
 	friend class Hotel;
 	void acceptchambre(int numch);		//rno = numch
-	void Afficherchambre();		//DISPLAY ROOMS
-	chambre()					//DEFAULT CONSTRUCTOR
+	void Afficherchambre();		
+	chambre()					//CONSTRUCTEUR PAR DÉFAUT
 	{
 		type='\0';
 		taille='\0';
@@ -89,9 +90,9 @@ public:
 		statu=0;
 	}
 };
-void chambre::acceptchambre(int numch)		//ACCEPTING ALL ROOM DETAILS
+void chambre::acceptchambre(int numch)		//ACCEPTER TOUS LES DÉTAILS DE LA CHAMBRE
 {
-	num_chambre=numch;	//ROOM NUMBER
+	num_chambre=numch;	//NUMÉRO DE CHAMBRE
 	cout<<"Type: AC/Non-AC [AC=air conditionne](A/N) : ";
 	cin>>ac;
 	while(ac!='A'&& ac!='N')		//VALIDATIONS
@@ -106,7 +107,7 @@ void chambre::acceptchambre(int numch)		//ACCEPTING ALL ROOM DETAILS
 		cout<<"Veuillez saisir a nouveau Type Suite Confort ou Normal(S/N) : ";
 		cin>>type;
 	}
-	cout<<"taille du chambre grand ou petit (G/P) : "; // B=G;S=P
+	cout<<"taille du chambre grand ou petit (G/P) : "; // G=grand ,p= petit 
 	cin>>taille;
 	while(taille!='G'&& taille!='P')
 	{
@@ -120,35 +121,36 @@ void chambre::acceptchambre(int numch)		//ACCEPTING ALL ROOM DETAILS
 		cout<<"Veuillez entrer un loyer valide.";
 		cin>>prix;
 	}
-	statu=0;	//BOOKING STATUS OF THE ROOM
+	statu=0;	//STATUT DE LA RESERVATION DE LA CHAMBRE
 	cout<<"\nchambre ajoutee avec succes!"<<endl;
 }
-void chambre::Afficherchambre()
+void chambre::Afficherchambre()    
 {
 	cout<<"| "<<num_chambre<<".\t\t|\t"<<ac<<"\t\t|\t"<<type<<"\t\t|\t"<<taille<<"\t\t|\t"<<prix<<"\t\t|\t";
 	if(statu==0){cout<<"Disponible.\t|";}
 	else{cout<<"Reserve.\t\t|";}
 	cout<<endl;
 }
+//class Hotel
 class Hotel
 {
-	chambre a[100];			//ARRAY OF ROOMS
-	Client c[100];			//ARRAY OF CUSTOMERS
-	int nchambre=0, noclient=0;	//NO OF ROOMS AND CUSTOMERS
+	chambre a[100];			//  TABLEAU DE CHAMBRES
+	Client c[100];			//TABLEAU DE CLIENTS
+	int nchambre=0, noclient=0;	//NOMBRE DE CHAMBRES ET DE CLIENTS
 public:
-	void AjoutChambre();		//addRooms
-	void RecherChambre();		//searchroom
-	void enregistr();			//CheckIn
-	void recherclient();		//searchcust
-	void disponibilite();	//availability
-	void quitter();		//CheckOut
-	void Resume();			//Summary
+	void AjoutChambre();		//ajouter des chambres
+	void RecherChambre();		// RecherChambre
+	void enregistr();			//enregistrer
+	void recherclient();		//recherclient
+	void disponibilite();	//disponibilite
+	void quitter();		//quitter
+	void Resume();			// Resume
 };
 void Hotel::AjoutChambre()
 {
 	int numch;
 	cout<<"Entrez le nombre des chambres: ";
-	cin>>nchambre;		//ACCEPTING NUMBER OF ROOMS
+	cin>>nchambre;		//ACCEPTER LE NOMBRE DE CHAMBRES
 	while(nchambre<=0)
 	{
 		cout<<"Invalide. Entrez un nombre valide des chambres.";
@@ -165,7 +167,7 @@ void Hotel::AjoutChambre()
 			cout<<endl<<"Ce numero de chambre est invalide ! Veuillez ressaisir le numero de chambre : ";
 			goto flag;
 		}
-		for(int i=0; i<nchambre;i++)	//VALIDATIONS FOR REPETITIVE ROOM NUMBERS
+		for(int i=0; i<nchambre;i++)	//VALIDATIONS POUR DES NUMÉROS DE CHAMBRE RÉPÉTITIFS
 		{
 			if(a[i].num_chambre==numch)
 			{
@@ -173,10 +175,9 @@ void Hotel::AjoutChambre()
 				goto flag;
 			}
 		}
-		a[i].acceptchambre(numch);		//CALLING FUNCTION ACCEPT ROOM FROM CLASS ROOM
-	}
-}
-void Hotel::disponibilite()		//CHECKING AVAILABILITY OF THE ROOMS
+		a[i].acceptchambre(numch);		//FONCTION D'APPEL ACCEPTER CHAMBRE DEPUIS SALLE DE CLASSE
+	
+void Hotel::disponibilite()		//VÉRIFICATION DE LA DISPONIBILITÉ DES CHAMBRES
 {
 	if(nchambre==0)
 	{
@@ -187,10 +188,10 @@ void Hotel::disponibilite()		//CHECKING AVAILABILITY OF THE ROOMS
 	cout<<"| chambre No.\t|\tAC/Non-AC\t|\tType\t\t|\ttaille\t\t|\tprix\t\t|\tdisponibilite \t|"<<endl;
 	for(int i=0;i<nchambre;i++)
 	{
-		a[i].Afficherchambre();	//DISPLAYING ROOM DETAILS
+		a[i].Afficherchambre();	//AFFICHAGE DES DÉTAILS DE LA CHAMBRE
 	}
 }
-void Hotel::RecherChambre()	//SEARCH FOR A PARTICULAR TYPE OF A ROOM
+void Hotel::RecherChambre()	//RECHERCHE D'UN TYPE PARTICULIER DE CHAMBRE
 {
 	if(nchambre==0)
 	{
@@ -207,7 +208,7 @@ void Hotel::RecherChambre()	//SEARCH FOR A PARTICULAR TYPE OF A ROOM
 	cin>>taille1;
 	for(int i=0;i<nchambre;i++)
 	{
-		if(a[i].ac==ac1 && a[i].type==type1 && a[i].taille==taille1)		//MAKING SURE ALL CONDITIONS ARE SATISFIED
+		if(a[i].ac==ac1 && a[i].type==type1 && a[i].taille==taille1)		// S'ASSURER QUE TOUTES LES CONDITIONS SONT SATISFAITES
 		{
 			flag=1;
 			cout<<"Chambre trouvee."<<endl;
@@ -219,7 +220,7 @@ void Hotel::RecherChambre()	//SEARCH FOR A PARTICULAR TYPE OF A ROOM
 		cout<<"Aucune chambre n'est disponible."<<endl;
 	}
 }
-void Hotel::enregistr()		//CHECK IN OF A CUSTOMER
+void Hotel::enregistr()		//ENREGISTREMENT D'UN CLIENT
 {
 	if(nchambre==0)
 	{
@@ -227,12 +228,12 @@ void Hotel::enregistr()		//CHECK IN OF A CUSTOMER
 		return;
 	}
 	int i, numch;
-	if(noclient<=nchambre){	//CHECKING CONDITION IF HOTEL HAS EMPTY ROOMS
-		c[noclient].id_reservation=noclient+1;	//ALLOTING CUSTOMER ID TO THE CUSTOMER
+	if(noclient<=nchambre){	//VÉRIFICATION DE LA CONDITION SI L'HÔTEL A DES CHAMBRES VIDE
+		c[noclient].id_reservation=noclient+1;	//ATTRIBUTION D'UN IDENTIFIANT CLIENT AU CLIENT
 		flag:
 		int flag1=0;
-		cout<<"Entrez le numero de chambre = ";		//ASKING WHAT ROOM NUMBER CUSTOMER WANTS TO STAY IN
-		cin>>numch;
+		cout<<"Entrez le numero de chambre = ";		//DEMANDER DANS QUEL NUMÉRO DE CHAMBRE LE CLIENT SOUHAITE SÉJOURNER
+                 cin>>numch ;
 		for(i=0;i<nchambre; i++){
 			if(numch==a[i].num_chambre)
 			{
@@ -244,7 +245,7 @@ void Hotel::enregistr()		//CHECK IN OF A CUSTOMER
 			cout<<"Numero de chambre invalide. Veuillez entrer a nouveau.\n";
 			goto flag;
 		}
-		if(a[i].statu==0)		//CHECKING IF ROOM IS UNOCCUPIED
+		if(a[i].statu==0)		//VERIFIER SI LA CHAMBRE EST INOCCUPEE
 		{
 			char ch2;
 			cout<<"Chambre disponible."<<endl;
@@ -253,10 +254,10 @@ void Hotel::enregistr()		//CHECK IN OF A CUSTOMER
 			cin>>ch2;
 			if(ch2=='Y'||ch2=='y')
 			{
-				c[noclient].accepter();		//ACCEPTING CUSTOMER DETAILS
-				cout<<"Entrez le nombre de jours de sejour: ";
+				c[noclient].accepter();		//ACCEPTATION DES COORDONNÉES DU CLIENT
+				cout<<"Entrez le nombre de jours de sejour: ";          
 				cin>>c[noclient].jours;
-				c[noclient].facture = c[noclient].jours*a[i].prix;		//generating bill. bill= No. of days * rent per day.
+				c[noclient].facture = c[noclient].jours*a[i].prix;		// générer la facture. bill= Nbre de jours * loyer par jour.
 				cout<<"Votre facture totale sera d'environ DH."<<(c[noclient].facture)<<"."<<endl<<"le Min Avance de paiement="<<c[noclient].facture/4<<"...>"<<"Que paierez-vous?";
 				cin>>c[noclient].Avance_de_paiement;
 				while(c[noclient].Avance_de_paiement<c[noclient].facture/4||c[noclient].Avance_de_paiement>c[noclient].facture)
@@ -264,28 +265,28 @@ void Hotel::enregistr()		//CHECK IN OF A CUSTOMER
 					cout<<"Entrez un montant valide.";
 					cin>>c[noclient].Avance_de_paiement;
 				}
-				cout<<"Merci. Reservation confirmee."<<endl;		//confirmed booking
-				cout<<"--------------------------------------------------------------"<<endl;		//printing booking details
+				cout<<"Merci. Reservation confirmee."<<endl;		//réservation confirmée
+				cout<<"--------------------------------------------------------------"<<endl;		//imprimer les détails de la réservation
 				cout<<"Reservation Id: "<<c[noclient].id_reservation<<"\nNom: "<<c[noclient].nom<<"\nRoom no.: "<<numch<<"\nDate: ";
 				time_t my_time = time(NULL);
-						// ctime() used to give the present time
+						// ctime() utilisé pour donner l'heure actuelle
 				printf("%s", ctime(&my_time));
-				a[i].statu=1;		//changing room status to booked
-				c[noclient].chambre=numch;		//alloting room to customer
+				a[i].statu=1;		//changer le statut de la chambre en réservé
+				c[noclient].chambre=numch;		//attribuer de la place au client
 				c[noclient].statu=1;
 				noclient++;
 			}
-			else		//if needs to change room number
+			else		//si besoin de changer de numéro de chambre
 			{
 				goto flag;
 			}
 		}
-		else		//if room is occupied
+		else		//si la chambre est occupée
 		{
 			cout<<"Chambre occupee. Veuillez choisir une autre chambre."<<endl;
 		}
 	}
-	else		//CONDITION ALL ROOMS ARE BOOKED
+	else		//CONDITION TOUTES LES CHAMBRES SONT RÉSERVÉES
 	{
 		cout<<"Desole! L'hotel est plein. :("<<endl;
 	}
@@ -295,7 +296,7 @@ void Hotel::recherclient()
 	int id, flag=0;
 	cout<<"Entrez l'identifiant de reservation du client: ";
 	cin>>id;
-	for(int i=0;i<=noclient;i++)		//SEARCHING FOR CUSTOMER
+	for(int i=0;i<=noclient;i++)		//RECHERCHE DE CLIENT
 	{
 		if(c[i].id_reservation==id)
 		{
@@ -323,19 +324,19 @@ void Hotel::quitter()		//CHECKING OUT
 			break;
 		}
 	}
-	if(a[j].statu==0)		//IF ROOM NOT FOUND OCCUPIED
+	if(a[j].statu==0)		//SI CHAMBRE NON TROUVÉE OCCUPÉE
 	{
 		cout<<"Invalide."<<endl;
 	}
-	for(i=0;i<noclient;i++)	//CHECKING CUSTOMER DETAILS
+	for(i=0;i<noclient;i++)	//VÉRIFICATION DES DONNÉES DU CLIENT
 	{
 		if(c[i].chambre==numch)
 		{
 			cout<<"dejat sortie."<<endl;
-			c[i].afficher();		//CUSTOMER DETAILS
+			c[i].afficher();		//Client DETAILS
 			cout<<"Votre facture totale est : "<<c[i].facture<<endl;
 			cout<<"Avance de paiement : "<<c[i].Avance_de_paiement;
-			cout<<endl<<"le reste du paiement = DH."<<c[i].facture-c[i].Avance_de_paiement;		//PENDING PAYMENTS
+			cout<<endl<<"le reste du paiement = DH."<<c[i].facture-c[i].Avance_de_paiement;		//PAIEMENTS EN ATTENTE
 			cout<<endl<<"Merci! Visiter encore :)"<<endl;
 			a[j].statu=0;	//CHANGING STATUS OF ROOM TO UNOCCUPIED
 			c[i].statu=0;	//CHECKED OUT
@@ -343,7 +344,7 @@ void Hotel::quitter()		//CHECKING OUT
 		}
 	}
 }
-void Hotel::Resume()		//PRINTING LIST OF ALL CUSTOMERS
+void Hotel::Resume()		//IMPRESSION DE LA LISTE DE TOUS LES CLIENTS
 {
 	if(nchambre==0)
 	{
