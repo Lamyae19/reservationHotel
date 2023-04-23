@@ -356,7 +356,7 @@ void Hotel::Resume()		//PRINTING LIST OF ALL CUSTOMERS
 	cout<<"|	telephone\t\t";
 	cout<<"|	adresse	\t\t";
 	cout<<"|	chambre no \t";
-	cout<<"|	Statu	\t\t|"<<endl;
+	cout<<"|	Statu	\t|"<<endl;
 	for(int i=0;i<noclient;i++)
 	{
 		c[i].afficher();
