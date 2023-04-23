@@ -57,11 +57,16 @@ void Client::accepter() {
   	  goto flag;
  	 }
 }
-
-
-
-
-
+void Customer::afficher()		//DISPLAYING CUSTOMER DETAILS
+{
+	cout<<id_reservation<<"\t\t";
+	cout<<"| "<<left<<setfill(' ')<<setw(30)<<nom;
+	cout<<"| "<<telephone<<"\t\t\t";
+	cout<<"| "<<left<<setfill(' ')<<setw(30)<<addresse;
+	cout<<"| "<<chambre<<"\t\t\t";
+	if(statu==1){cout<<"|\t\t-\t\t|"<<endl;}
+	else{cout<<"|\tdejat sortie.\t\t|"<<endl;}
+}
 class chambre
 {
 	char type;				
