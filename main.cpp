@@ -39,7 +39,7 @@ void Client::accepter() {
 	getline(cin, nom);
 	getline(cin, nom);
 	cout<<"Enter l' addresse de client: ";
-	getline(cin,addresse);
+	getline(cin,adresse);
 	flag:
 	cout<<"Enter le numero de telephone : ";
 	cin>>telephone;
