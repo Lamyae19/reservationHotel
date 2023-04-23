@@ -353,9 +353,9 @@ void Hotel::Resume()		//PRINTING LIST OF ALL CUSTOMERS
 	cout<<"Recapitulatif des invites:"<<endl;
 	cout<<"Id.\t\t";
 	cout<<"|	Nom	\t\t";
-	cout<<"|	telephone	\t\t";
+	cout<<"|	telephone\t\t";
 	cout<<"|	adresse	\t\t";
-	cout<<"|	chambre no	: \t";
+	cout<<"|	chambre no \t";
 	cout<<"|	Statu	\t\t|"<<endl;
 	for(int i=0;i<noclient;i++)
 	{
