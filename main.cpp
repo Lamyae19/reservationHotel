@@ -35,7 +35,7 @@ public :
 
 };
 void Client::accepter() {
-   cout<<"Enter le nom de client";
+   cout<<"Enter le nom de client: ";
 	getline(cin, nom);
 	getline(cin, nom);
 	cout<<"Enter l' addresse de client: ";
@@ -231,7 +231,7 @@ void Hotel::enregistr()		//CHECK IN OF A CUSTOMER
 		c[noclient].id_reservation=noclient+1;	//ALLOTING CUSTOMER ID TO THE CUSTOMER
 		flag:
 		int flag1=0;
-		cout<<"Entrez le numero de chambre=";		//ASKING WHAT ROOM NUMBER CUSTOMER WANTS TO STAY IN
+		cout<<"Entrez le numero de chambre = ";		//ASKING WHAT ROOM NUMBER CUSTOMER WANTS TO STAY IN
 		cin>>numch;
 		for(i=0;i<nchambre; i++){
 			if(numch==a[i].num_chambre)
