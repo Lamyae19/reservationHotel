@@ -257,7 +257,7 @@ void Hotel::enregistr()		//CHECK IN OF A CUSTOMER
 				cout<<"Entrez le nombre de jours de sejour: ";
 				cin>>c[noclient].jours;
 				c[noclient].facture = c[noclient].jours*a[i].prix;		//generating bill. bill= No. of days * rent per day.
-				cout<<"Votre facture totale sera d'environ DH."<<(c[noclient].facture)<<"."<<endl<<". Min Avance de paiement="<<c[noclient].facture/4<<"Que paierez-vous?";
+				cout<<"Votre facture totale sera d'environ DH."<<(c[noclient].facture)<<"."<<endl<<"le Min Avance de paiement="<<c[noclient].facture/4<<"...>"<<"Que paierez-vous?";
 				cin>>c[noclient].Avance_de_paiement;
 				while(c[noclient].Avance_de_paiement<c[noclient].facture/4||c[noclient].Avance_de_paiement>c[noclient].facture)
 				{
