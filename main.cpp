@@ -53,7 +53,7 @@ void Client::accepter() {
   	}
   	if(telephone.length()!=10)		
   	{
-  	  cout<<"le numero de telephone doit comporter 10chiffres.\n";
+  	  cout<<"le numero de telephone doit comporter 10 chiffres.\n";
   	  goto flag;
  	 }
 }
