@@ -92,7 +92,7 @@ public:
 void chambre::acceptchambre(int numch)		//ACCEPTING ALL ROOM DETAILS
 {
 	num_chambre=numch;	//ROOM NUMBER
-	cout<<"Type: AC/Non-AC [AC=air conditionné](A/N) : ";
+	cout<<"Type: AC/Non-AC [AC=air conditionne](A/N) : ";
 	cin>>ac;
 	while(ac!='A'&& ac!='N')		//VALIDATIONS
 	{
