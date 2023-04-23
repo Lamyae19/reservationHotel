@@ -18,14 +18,14 @@ class Client {
     double facture=0 ;
     int id_reservation ;
     int chambre;
-    int statut; 
+    int statu; 
 public :
     Client() {
         jours = 0;
         Avance_de_paiement = 0;
         facture = 0;
         id_reservation = 0;
-        statut = 0;
+        statu = 0;
         chambre = 0;
     }
     void accepter();
