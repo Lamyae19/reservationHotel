@@ -36,7 +36,7 @@ public :
 };
 void Client::accepter() {
     cout << "Saisir le nom de client ";
-    std::basic_istream::getline(cin, nom);
+    getline(cin, nom);
     
 }
 
