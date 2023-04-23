@@ -35,10 +35,29 @@ public :
 
 };
 void Client::accepter() {
-    cout << "Saisir le nom de client ";
-    getline(cin, nom);
-    
+   cout<<"Enter le nom de client";
+	getline(cin, nom);
+	getline(cin, nom);
+	cout<<"Enter l' addresse de client: ";
+	getline(cin,addresse);
+	flag:
+	cout<<"Enter le numero de telephone : ";
+	cin>>telephone;
+	for(int i=0;i<(telephone.length());i++)	
+  	{									
+		if(!isdigit(telephone[i]))
+		{
+			cout<<"le numero de telephone doit etre en chiffres.\n";
+			goto flag;
+		}
+  	}
+  	if(telephone.length()!=10)		
+  	{
+  	  cout<<"le numero de telephone doit comporter 10chiffres.\n";
+  	  goto flag;
+ 	 }
 }
+
 
 
 
