@@ -176,7 +176,8 @@ void Hotel::AjoutChambre()
 			}
 		}
 		a[i].acceptchambre(numch);		//FONCTION D'APPEL ACCEPTER CHAMBRE DEPUIS SALLE DE CLASSE
-	
+	}
+}
 void Hotel::disponibilite()		//VÉRIFICATION DE LA DISPONIBILITÉ DES CHAMBRES
 {
 	if(nchambre==0)
