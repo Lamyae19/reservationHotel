@@ -201,7 +201,7 @@ void Hotel::RecherChambre()	//SEARCH FOR A PARTICULAR TYPE OF A ROOM
 	char ac1, type1, taille1;
 	cout<<"Est-ce que tu veux AC ou Non-AC? (A/N): "<<endl;
 	cin>>ac1;
-	cout<<"Voulez-vous une suite ou une chambre normale ?"<<endl;
+	cout<<"Voulez-vous une suite ou une chambre normale(S/N) ?"<<endl;
 	cin>>type1;
 	cout<<"taille? (G/P)"<<endl;
 	cin>>taille1;
