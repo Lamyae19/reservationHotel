@@ -293,15 +293,15 @@ void Hotel::enregistr()		//CHECK IN OF A CUSTOMER
 void Hotel::recherclient()
 {
 	int id, flag=0;
-	cout<<"Entrez l'identifiant de reservation du client.";
+	cout<<"Entrez l'identifiant de reservation du client: ";
 	cin>>id;
 	for(int i=0;i<=noclient;i++)		//SEARCHING FOR CUSTOMER
 	{
 		if(c[i].id_reservation==id)
 		{
-			cout<<"\t\t\t Nom"<<setw(20);
-			cout<<"\t\t\t telephone"<<setw(20);
-			cout<<"\t\t\t adresse"<<setw(20);
+			cout<<"\t\t\t Nom: "<<setw(20);
+			cout<<"\t\t\t telephone: "<<setw(20);
+			cout<<"\t\t\t adresse: "<<setw(20);
 			cout<<"\t\t\tchambre no: "<<setw(20)<<endl;
 			c[i].afficher();
 			flag=1;
