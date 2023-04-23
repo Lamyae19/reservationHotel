@@ -57,7 +57,7 @@ void Client::accepter() {
   	  goto flag;
  	 }
 }
-void Customer::afficher()		//DISPLAYING CUSTOMER DETAILS
+void Client::afficher()		//DISPLAYING CUSTOMER DETAILS
 {
 	cout<<id_reservation<<"\t\t";
 	cout<<"| "<<left<<setfill(' ')<<setw(30)<<nom;
