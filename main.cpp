@@ -10,7 +10,6 @@ using namespace std;
 
              // Class client
 class Client {
-public :
     string nom;    //  nom complet du client 
     string adresse;//  adresse du client 
     string telephone;   // numero de telephone 
@@ -19,7 +18,8 @@ public :
     double facture=0 ;
     int id_reservation ;   //identifiant de reservation 
     int chambre;        //numero de chambre 
-    int statu;        
+    int statu;  
+public :
     Client() {
         jours = 0;
         Avance_de_paiement = 0;
@@ -31,7 +31,7 @@ public :
     void accepter();     //ACCEPTER LES COORDONNÉES DU CLIENT
     void afficher();     //AFFICHER LES COORDONNÉES DU CLIENT
     friend class chambre;
-    friend class hotel;
+    friend class Hotel;
 
 };
 void Client::accepter() {         //ACCEPTER LES COORDONNÉES DU CLIENT
