@@ -78,7 +78,7 @@ class chambre
 public:
 	friend class Hotel;
 	void acceptchambre(int numch);		//rno = numch
-	void displaychambre();		//DISPLAY ROOMS
+	void Afficherchambre();		//DISPLAY ROOMS
 	chambre()					//DEFAULT CONSTRUCTOR
 	{
 		type='\0';
