@@ -64,7 +64,7 @@ void Client::afficher()		//DISPLAYING CUSTOMER DETAILS
 	cout<<"| "<<telephone<<"\t\t\t";
 	cout<<"| "<<left<<setfill(' ')<<setw(30)<<adresse;
 	cout<<"| "<<chambre<<"\t\t\t";
-	if(statu==1){cout<<"|\t\t-\t\t|"<<endl;}
+	if(statu==1){cout<<"|\t\t-\t|"<<endl;}
 	else{cout<<"|\tdejat sortie.\t\t|"<<endl;}
 }
 class chambre
