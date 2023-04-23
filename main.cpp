@@ -11,15 +11,15 @@ using namespace std;
              // Class client
 class Client {
 public :
-    string nom;
-    string adresse;
-    string telephone;
-    int jours = 0;
-    float Avance_de_paiement;
+    string nom;    //  nom complet du client 
+    string adresse;//  adresse du client 
+    string telephone;   // numero de telephone 
+    int jours = 0;    //  la duree de reservation
+    float Avance_de_paiement; 
     double facture=0 ;
-    int id_reservation ;
-    int chambre;
-    int statu; 
+    int id_reservation ;   //identifiant de reservation 
+    int chambre;        //numero de chambre 
+    int statu;        
     Client() {
         jours = 0;
         Avance_de_paiement = 0;
