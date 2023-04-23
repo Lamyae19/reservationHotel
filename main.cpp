@@ -401,6 +401,7 @@ int main()
 					"6.quitter la chambre\n\t\t\t\t\t\t\t\t\t"
 					"7.Retournez au menu principal\n\t\t\t\t\t\t\t\t\t"
 					"Entrez votre choix:";
+				cin>>ch1;
 				switch(ch1)
 				{
 				case '1':
