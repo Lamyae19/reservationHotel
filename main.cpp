@@ -134,7 +134,7 @@ class Hotel
 {
 	chambre a[100];			//ARRAY OF ROOMS
 	Client c[100];			//ARRAY OF CUSTOMERS
-	int nchambre=0, nclient=0;	//NO OF ROOMS AND CUSTOMERS
+	int nchambre=0, noclient=0;	//NO OF ROOMS AND CUSTOMERS
 public:
 	void AjoutChambre();		//addRooms
 	void RecherChambre();		//searchroom
