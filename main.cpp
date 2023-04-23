@@ -382,7 +382,7 @@ int main()
 		{
 		case '1':
 			cout<<"Ajouter une base de donnees des chambres de l'hotel:"<<endl;
-			slm.addRooms();
+			slm.AjoutChambre();
 			cout<<"Base de donnees mise a jour. Retour au menu principal."<<endl;
 			break;
 		case '2':
@@ -401,26 +401,25 @@ int main()
 					"6.quitter la chambre\n\t\t\t\t\t\t\t\t\t"
 					"7.Retournez au menu principal\n\t\t\t\t\t\t\t\t\t"
 					"Entrez votre choix:";
-				cin>>ch1;
 				switch(ch1)
 				{
 				case '1':
-					slm.availability();
+					slm.disponibilite();
 					break;
 				case '2':
-					slm.searchroom();
+					slm.RecherChambre();
 					break;
 				case '3':
-					slm.CheckIn();
+					slm.enregistr();
 					break;
 				case '4':
-					slm.searchcust();
+					slm.recherclient();
 					break;
 				case '5':
-					slm.Summary();
+					slm.Resume();
 					break;
 				case '6':
-					slm.CheckOut();
+					slm.quitter();
 					break;
 				case '7':
 					break;
