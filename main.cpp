@@ -89,7 +89,7 @@ public:
 		statu=0;
 	}
 };
-void Room::acceptchambre(int numch)		//ACCEPTING ALL ROOM DETAILS
+void chambre::acceptchambre(int numch)		//ACCEPTING ALL ROOM DETAILS
 {
 	num_chambre=numch;	//ROOM NUMBER
 	cout<<"Type: AC/Non-AC [AC=air conditionné](A/N) : ";
